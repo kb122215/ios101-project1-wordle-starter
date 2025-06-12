@@ -47,8 +47,9 @@ class BoardController: NSObject,
       // START YOUR CODE HERE
       // ...
       // END YOUR CODE HERE
+        cell.transform = cell.transform.scaledBy(x: 1.05, y: 1.05)
     }, completion: { finished in
-      cell.transform = CGAffineTransformIdentity
+        cell.transform = .identity
     })
     if isFinalGuessInRow() {
       markLettersInRow()
@@ -60,11 +61,14 @@ class BoardController: NSObject,
     guard numGuesses > 0 && numGuesses % numItemsPerRow != 0 else { return }
     let cell = collectionView.cellForItem(at: IndexPath(item: numGuesses - 1, section: 0)) as! LetterCell
     numGuesses -= 1
+      cell.set(letter: "")
+      cell.set(style: .initial)
     // Exercise 6: Look at the available LetterCell's methods to clear the letter and set the style to `initial`
     // Tip: Checkout the public methods on LetterCell.swift
     // Checkpoint: After finishing this exercise, you should now be able to tap on the delete keyboard cell and have the last letter deleted on the board! If it's not working, check your work on this exercise and make sure deleteLastCharacter() is called properly in exercise 3.
     // START YOUR CODE HERE
     // ...
     // END YOUR CODE HERE
+      
   }
 }
